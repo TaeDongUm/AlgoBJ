@@ -13,6 +13,7 @@ public class Main {
 	static int N;
 	static int groupCount;
 	static int max = -1;
+    static int maxHeight=-1;
 	public static void main(String[] args) throws Exception{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
@@ -24,9 +25,10 @@ public class Main {
 			st = new StringTokenizer(br.readLine());
 			for(int j=0;j<N;j++) {
 				map[i][j] = Integer.parseInt(st.nextToken());
+                if(maxHeight <map[i][j]) maxHeight = map[i][j];
 			}
 		}
-		for(int i=0;i<=100;i++) {
+		for(int i=0;i<=maxHeight;i++) {
 			rain(map,i);
 			safeZone(map, 0,0);
 		}
