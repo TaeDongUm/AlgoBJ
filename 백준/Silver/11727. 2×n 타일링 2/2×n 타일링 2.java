@@ -13,7 +13,8 @@ public class Main {
 		dp[0] = 0;
 		dp[1] = 1;
 		dp[2] = 3;
-		System.out.println(tile(N));
+        int answer = tile(N) % 10_0007;
+		System.out.println(answer);
 	}
 	
 	public static int tile(int N) {
