@@ -1,49 +1,59 @@
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.util.Arrays;
-import java.io.IOException;
 
 public class Main{
     static int[] arr;
     static int[] check;
-    public static void main(String[] args) throws IOException{
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static BufferedWriter bw =  new BufferedWriter(new OutputStreamWriter(System.out));
+    public static void main(String[] args) throws Exception{
+
+        StringTokenizer s;
         int N = Integer.parseInt(br.readLine());
         arr = new int[N];
         
-        st = new StringTokenizer(br.readLine());
+        s = new StringTokenizer(br.readLine());
         for(int i=0;i<N;i++){
-            arr[i] = Integer.parseInt(st.nextToken());
+            arr[i] = Integer.parseInt(s.nextToken());
         }
         Arrays.sort(arr);
         int M = Integer.parseInt(br.readLine());
         check = new int[M];
-        st = new StringTokenizer(br.readLine());
+        s = new StringTokenizer(br.readLine());
         for(int i=0;i<M;i++){
-            check[i] = Integer.parseInt(st.nextToken());
+            check[i] = Integer.parseInt(s.nextToken());
         }
+
         for(int i=0;i<M;i++){
-            System.out.println(binarySearch(arr, check[i]));
-        }
-    }
-    
-    public static int binarySearch(int[] arr, int target){
-        int st = 0;
-        int en = arr.length-1;
+           int target = check[i];
+           int st = 0;
+           int en = arr.length-1;
         
-        
-        while(st <= en){
-            int mid = (st + en)/2;
-            if(arr[mid] < target){
-                st = mid +1;
-            }else if(arr[mid] > target){
-                en = mid -1;
+           int check =1;
+            while(st <= en){
+                int mid = (st + en)/2;
+               if(arr[mid] < target){
+                   st = mid +1;
+                }else if(arr[mid] > target){
+                    en = mid -1;
+                }else{
+                    check =0;
+                    break;
+                }
+            }
+            if(check ==1){
+                bw.append(0 + "\n");
             }else{
-                return 1;
+                bw.append(1 + "\n");
             }
         }
-        return 0;
+        bw.flush();
+        bw.close();
+        br.close();
     }
+
 }
