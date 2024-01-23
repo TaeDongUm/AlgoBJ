@@ -8,7 +8,7 @@ public class Main {
 	static int R,C;
 	static String[][] board;
 	static char[][] visited;
-	static int minMove=1;
+	static int Jcount, minMove=1;
 	static int[] dx = {0,0,1,-1};
 	static int[] dy = {1,-1,0,0};
 	static boolean check = false;
@@ -30,6 +30,7 @@ public class Main {
 			for(int j=0;j<C;j++) {
 				char input = line.charAt(j);
 				if(input =='J') {
+                    Jcount++;
 					q.add(new int[] {i,j,1});
 					visited[i][j] = 'J';
 					board[i][j] = "1";
@@ -56,6 +57,7 @@ public class Main {
 	}
 	public static void bfs(String[][] board, char[][] visited, Queue<int[]> q) {
 		while(!q.isEmpty()) {
+            if(Jcount ==0) return;
 			int[] cur = q.poll();
 			int x = cur[0];
 			int y = cur[1];
@@ -90,9 +92,11 @@ public class Main {
 					
 					if(nx>=0 && nx<R && ny >=0 && ny<C) {
 						if(!board[nx][ny].equals("#") && (visited[nx][ny] != 'F' && visited[nx][ny] !='#')) {
-							board[nx][ny] ="F";
+							if(board[nx][ny].equals("J")) Jcount--;
+                            board[nx][ny] ="F";
 							visited[nx][ny] = 'F';
 							q.add(new int[] {nx,ny, 0});
+                            
 						}
 					}
 				}
