@@ -1,6 +1,6 @@
 # [level 1] 흉부외과 또는 일반외과 의사 목록 출력하기 - 132203 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/132203) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/132203?language=mysql) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@ Empty
 
 ### 제출 일자
 
-2024년 2월 0일 20:51:32
+2024년 2월 0일 20:58:56
 
 ### 문제 설명
 
