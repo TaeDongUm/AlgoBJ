@@ -12,9 +12,22 @@
 #         GROUP BY AUTHOR_ID, CATEGORY
 #     ) AS A JOIN BOOK ON A.BOOD_ID = BOOK.BOOK_ID USING(AUTHOR_ID, CATEGORY)
 #     ORDER BY AUTHOR_ID, CATEGORY DESC;
+
+
 SELECT a.AUTHOR_ID, a.AUTHOR_NAME, b.CATEGORY,SUM(s.sales * b.price) TOTAL_SALES
 from book_sales s join book b on s.book_id=b.book_id
 join AUTHOR a ON b.AUTHOR_ID = a.AUTHOR_ID
 where date_format(s.sales_date,"%Y-%m")="2022-01"
 group by a.author_name, b.category
 order by a.author_id, b.category desc
+
+# SELECT BOOK.AUTHOR_ID , AUTHOR.AUTHOR_NAME, BOOK.CATEGORY, sum(BOOK.PRICE*BOOK_SALES.SALES) TOTAL_SALES
+# FROM BOOK 
+# JOIN AUTHOR
+# ON BOOK.AUTHOR_ID  = AUTHOR.AUTHOR_ID
+# JOIN BOOK_SALES
+# ON BOOK.BOOK_ID = BOOK_SALES.BOOK_ID
+# WHERE DATE_FORMAT(BOOK_SALES.sales_date,"%Y-%m-%d") LIKE "2022-01%"
+# GROUP BY AUTHOR.author_name, BOOK.category
+# ORDER BY BOOK.AUTHOR_ID , BOOK.CATEGORY DESC;
+
